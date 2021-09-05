@@ -1,0 +1,31 @@
+---
+- name: Websevers
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: Apache install
+    package:
+      name: httpd
+      state: present
+
+  - name: Apache enable
+    service:
+      name: httpd
+      enabled: yes
+
+  - name: Apache Started
+    service:
+      name: httpd
+      state: started
+
+  - name: git install
+    package:
+      name: git
+      state: present
+  
+  - name: Code is updated
+    git:
+      repo: 'https://github.com/nareshreddy1238/ecomm.git'
+      dest: /var/www/html
+...

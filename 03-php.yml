@@ -1,0 +1,32 @@
+- name: update web servers
+  hosts: all
+  become: yes
+
+  tasks:
+
+  - name: ensure php file updated
+    copy:
+      dest: /var/www/html/date.php
+      src: date.php
+
+  - name: ensure php is installed
+    package:
+      name: php
+      state: present
+
+  - name: ensure httpd is restarted
+    service:
+      name: httpd
+      state: restarted
+
+  - name: ensure httpd file updated
+    copy:
+      dest: /etc/httpd/conf/httpd.conf
+      src: httpd.conf
+
+  - name: ensure httpd is restarted
+    service:
+      name: httpd
+      state: restarted
+...
+

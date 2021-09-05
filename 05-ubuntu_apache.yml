@@ -1,0 +1,22 @@
+---
+- name: ubuntu servers
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Apache install
+    package:
+      name: apache2
+      update_cache: yes
+      state: present
+
+  - name: Apache enable
+    service:
+      name: apache2
+      enabled: yes
+
+  - name: Apache Started
+    service:
+      name: apache2
+      state: started
+...
