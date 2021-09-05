@@ -1,0 +1,4 @@
+---
+# vars file for apache
+    username: nani
+    doc_root: /var/www/html
